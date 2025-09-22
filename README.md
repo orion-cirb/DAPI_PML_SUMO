@@ -1,19 +1,22 @@
-# DAPI_PML
+# DAPI_PML_SUMO
 
-* **Developed by:** Thomas
+* **Developed by:** Thomas & Héloïse
 * **Developed for:** Adèle
 * **Team:** De Thé
 * **Date:** September 2025
-* **Software:** Python Notebook
+* **Software:** Jupyter Notebook (for analysis) and Napari (for visualization)
 
 ### Images description
 
-2D or 3D images.
+Images acquired on Zeiss LSM 800 confocal microscope with a 63x objective:
+
+1. 2D images: 1x zoom, pixel size: 0.099 μm (XY)
+2. 3D stacks: 2x zoom, voxel size: 0.055 μm (XY), 0.25 μm (Z)
 
 3 channels:
-  1. DAPI nuclei
+  1. Nuclei
   2. PML foci
-  3. SUMO
+  3. SUMO2 or another partner protein
 
 
 ### Plugin description
@@ -38,7 +41,7 @@ conda activate PML_SUMO
 ```
 jupyter notebook
 ```
-6. In your web browser, navigate to and open the `PML_SUMO.ipynb` notebook
+6. In your web browser, navigate to and open the `DAPI_PML_SUMO.ipynb` notebook
 7. Enter the required parameters in the designated cell
 8. Run all cells to perform the data analysis
 9. Run the visualization cells to review the results in Napari
@@ -46,11 +49,11 @@ jupyter notebook
 ### Dependencies
 
 * Conda environment **PML_SUMO**
-
+* Cellpose 3 pretrained model `nuclei`
 
 Both the **PML_SUMO** environment and the `nuclei` model are installed on the WS3 workstation in the ORION image analysis room.
 
-To install the environment on another computer, use the `environment.yml` file provided in the repository. If you experience issues installing Cellpose v3.1.1 (preferably the GPU-enabled version), please follow the official installation instructions here: https://github.com/MouseLand/cellpose
+To install the environment on another computer, use the `environment.yml` file provided in the repository. If you experience issues installing Cellpose v3.1.1 (preferably the GPU-enabled version), please follow the official installation instructions here: https://github.com/MouseLand/cellpose.
 
 
 ### Version history
