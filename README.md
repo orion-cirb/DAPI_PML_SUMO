@@ -3,7 +3,7 @@
 * **Developed by:** Thomas & Héloïse
 * **Developed for:** Adèle
 * **Team:** De Thé
-* **Date:** September 2025
+* **Date:** October 2025
 * **Software:** Jupyter Notebook (for analysis) and Napari (for visualization)
 
 ### Images description
@@ -14,20 +14,34 @@ Images acquired on Zeiss LSM 800 confocal microscope with a 63x objective:
 2. 3D stacks: 2x zoom, voxel size: 0.055 μm (XY), 0.25 μm (Z)
 
 3 channels:
-  1. Nuclei
+  1. DAPI nuclei
   2. PML foci
   3. SUMO2 or another partner protein
 
 
-### Plugin description
+### Notebooks description
 
-* Detect DAPI nuclei with Cellpose (Nuclei Model)
-* Find focussed slices with a difference of variance method
-* Segment PML foci with DoG filtering + automatic thresholding
-* For each nucleus, provide:
-  * PML foci number, area and PML,SUMO mean background-corrected intensity
-  * SUMO diffuse signal (aka outside foci) mean and sum background-corrected intensity
-* Background intensity is estimated on each z-slice by applying a Gaussian filter + Li thresholding, and measuring the mean intensity within the inverted mask (background region)
+#### DAMI_PML_SUMO_3D.ipynb
+
+* Identify focused slices on PML channel using the Laplacian variance method
+* Detect nuclei in 3D:
+  * Perform maximum-intensity z-projection of DAPI channel
+  * Detect nuclei in 2D using Cellpose
+  * Extend nuclei into 3D across focused slices
+* Detect PML foci in 3D using DoG filtering + Triangle automatic thresholding + opening
+* Estimate background intensity in PML and SUMO2 channels as the median pixel intensity outside nuclei
+* For each nucleus:
+  * Compute the following parameters for each focus: volume, mean and sum of background-corrected intensity in PML channel, mean and sum of background-corrected intensity in SUMO2 channel
+  * Compute mean and sum of background-corrected intensity in SUMO2 channel outside PML foci
+ 
+#### DAMI_PML_SUMO_2D.ipynb
+
+* Detect nuclei in 2D using Cellpose
+* Detect PML foci in 2D using DoG filtering + Triangle automatic thresholding + opening
+* Estimate background intensity in PML and SUMO2 channels as the median pixel intensity outside nuclei
+* For each nucleus:
+  * Compute the following parameters for each focus: area, mean and sum of background-corrected intensity in PML channel, mean and sum of background-corrected intensity in SUMO2 channel
+  * Compute mean and sum of background-corrected intensity in SUMO2 channel outside PML foci
 
 ### Usage instructions
 
@@ -58,4 +72,4 @@ To install the environment on another computer, use the `environment.yml` file p
 
 ### Version history
 
-Version 1 released on September 12, 2025.
+Version 1 released on October 2, 2025.
