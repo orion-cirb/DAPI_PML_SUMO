@@ -73,3 +73,4 @@ To install the environment on another computer, use the `environment.yml` file p
 ### Version history
 
 Version 1 released on October 2, 2025.
+DOI created on October 16, 2026
